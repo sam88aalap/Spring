@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+ <bean class="com.spring.collections.beans.Employee" id="employee">
+    <property name="empId" value="89789"></property>
+    <property name="name" value="John"></property>
+    <property name="designation" value="Frontend Developer"></property>
+    <property name="techStack">
+       <list>
+         <value>HTML</value>
+         <value>Javascript</value>
+         <value>CSS</value>
+         <value>React</value>
+       </list>
+    </property>
+    <property name="addresses">
+       <set>
+          <value>Kottayam</value> 
+          <value>Kochi</value> 
+          <value>Kollam</value>       
+       </set>
+    </property>
+    <property name="experience">
+      <map>
+       <entry key="HTML" value="4"></entry>
+       <entry key="CSS" value="4"></entry>
+       <entry key="Javascript" value="4"></entry>
+       <entry key="React" value="2"></entry>
+      </map>
+    </property>
+ </bean>
+ 
+    <bean class="com.spring.collections.beans.Product" id="product1">
+     <constructor-arg name="productId" value="1"></constructor-arg>
+     <constructor-arg name="productName" value="Laptop"></constructor-arg>
+     <constructor-arg name="cost" value="88000"></constructor-arg>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Product" id="product2">
+     <constructor-arg name="productId" value="2"></constructor-arg>
+     <constructor-arg name="productName" value="Monitor"></constructor-arg>
+     <constructor-arg name="cost" value="18000"></constructor-arg>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Product" id="product3">
+     <constructor-arg name="productId" value="3"></constructor-arg>
+     <constructor-arg name="productName" value="Mobile Phone"></constructor-arg>
+     <constructor-arg name="cost" value="19000"></constructor-arg>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Cart" id="cart1">
+      <property name="cartId" value="101"></property>
+      <property name="products">
+        <set>
+           <ref bean="product1"/>    
+           <ref bean="product2"/>
+           <ref bean="product3"/>    
+        </set>
+      </property>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Cart" id="cart2">
+      <property name="cartId" value="101"></property>
+      <property name="products">
+        <set>
+           <ref bean="product1"/>    
+           <ref bean="product3"/>    
+        </set>
+      </property>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Cart" id="cart3">
+      <property name="cartId" value="101"></property>
+      <property name="products">
+        <set>
+           <ref bean="product1"/>    
+           <ref bean="product2"/>  
+        </set>
+      </property>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Address" id="address1">
+       <property name="city" value="Kochi"></property>
+       <property name="pincode" value="687587"></property>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Address" id="address2">
+       <property name="city" value="Trivandrum"></property>
+       <property name="pincode" value="687487"></property>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Address" id="address3">
+       <property name="city" value="Banglore"></property>
+       <property name="pincode" value="767487"></property>
+    </bean>
+    
+    <bean class="com.spring.collections.beans.Customer" id="customer">
+       <property name="customerId" value="1001"></property>
+       <property name="cart">
+          <ref bean="cart1"/>
+       </property>
+       <property name="addresses">
+          <map>
+            <entry key="address-1">
+             <ref bean="address1"></ref> 
+            </entry>
+            <entry key="address-2">
+             <ref bean="address2"></ref> 
+            </entry>
+          </map>
+       </property>
+    </bean>
+    
+    <!-- STAND ALONE(REUSABLE LIST) -->
+    <util:list list-class="java.util.ArrayList" id="Scores">
+      <value>89</value>
+      <value>79</value>
+      <value>90</value>
+    </util:list>
+    
+    <!-- using the reusable list  -->
+    <bean class="com.spring.collections.beans.Student" id="student1">
+       <constructor-arg name="rollNo" value="1" ></constructor-arg>
+       <constructor-arg name="name" value="Naveen B" ></constructor-arg>
+       <constructor-arg name="marks" ref="Scores" ></constructor-arg>
+    </bean>
+    
+</beans>
