@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+
+<bean class="com.spring.training.beans.ReportCard" id="reportCard2" autowire-candidate="default">
+<constructor-arg name="score" value="90"></constructor-arg>
+<constructor-arg name="grade" value="A+"></constructor-arg>
+</bean>
+
+<bean class="com.spring.training.beans.Address" id="address2" autowire-candidate="true">
+<constructor-arg name="city" value="Munich"></constructor-arg>
+<constructor-arg name="pincode" value="Mu-142"></constructor-arg>
+</bean> 
+
+<bean class="com.spring.training.beans.Address" id="address" autowire-candidate="true">
+<constructor-arg name="city" value="Stuttgart"></constructor-arg>
+<constructor-arg name="pincode" value="St-142"></constructor-arg>
+</bean>
+
+<!-- Autowiring by name
+ <bean class="com.spring.training.beans.Student" id="student" autowire="byName">
+<property name="rollNo" value="23"></property>
+<property name="name" value="Shawn"></property>
+</bean>
+-->
+
+<!-- Autowiring by type 
+<bean class="com.spring.training.beans.Student" id="student" autowire="byType">
+<property name="rollNo" value="23"></property>
+<property name="name" value="Shawn"></property>
+</bean>
+-->
+ 
+ <!-- Autowiring by constructor -->
+<bean class="com.spring.training.beans.Student" id="student" autowire="constructor">
+<constructor-arg name="rollNo" value="23"></constructor-arg>
+<constructor-arg name="name" value="Shawn"></constructor-arg>
+</bean>
+
+
+
+
+
+
+</beans>
